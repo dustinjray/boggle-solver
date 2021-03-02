@@ -239,11 +239,9 @@ class App extends Component {
                         onClick={() => this.handleSolve()}>SOLVE</button>
                 </div>
                 <div className={"stats-panel"}>
-                    <h2>Score: <span className={"user-score"}>{this.state.score}</span></h2>
-                    {/*<Timer*/}
-                    {/*    gameStart={this.state.gameStart}*/}
-                    {/*    startGame={this.startGame}*/}
-                    {/*/>*/}
+                    <h2>Possible Words: {this.state.allWords.length}</h2>
+                    <h2>Words Found: {this.state.guessedWords.length}</h2>
+                    <h2>Score: {this.state.score}</h2>
                 </div>
                 <hr/>
             </div>
