@@ -36,7 +36,7 @@ class App extends Component {
             showWords: false,
             gameStart: false
         };
-        this.handleMouseUp = this.handleMouseUp.bind(this);
+        this.handlePointerUp = this.handlePointerUp.bind(this);
         this.showPath = this.showPath.bind(this);
     }
 
@@ -134,7 +134,7 @@ class App extends Component {
       this.setState({allWords: words, guessedWords: new Set(), paths: paths, score: 0, showWords: false, gameStart: true});
   }
 
-  handleMouseDown = (x, y, isMouseDown) => {
+  handlePointerDown = (x, y, isMouseDown) => {
       if(!this.state.selected[x][y]) {
           this.setState((prevState) => {
               const selected = prevState.selected;
@@ -145,7 +145,7 @@ class App extends Component {
   }
 
 
-  handleMouseUp() {
+  handlePointerUp() {
       if(this.state.wordStart){
           const selected = [
               Array(4).fill(false),
@@ -172,7 +172,7 @@ class App extends Component {
       }
   }
 
-  handleMouseEnter = (x, y, letter) => {
+  handlePointerEnter = (x, y, letter) => {
       if (this.state.wordStart){
           if(this.isAdjacent(x, y)){
               if (!this.state.selected[x][y] && !this.state.usedTiles.has(`${x.toString()}${y.toString()}`)) {
@@ -215,14 +215,14 @@ class App extends Component {
   render () {
     return (
         <div className={"app"}
-             onMouseUp={this.handleMouseUp}>
+             onMouseUp={this.handlePointerUp}>
             <div className={"game-area"}>
                 <Guess string={this.state.word}/>
                 <Board
                     dice={this.state.diceResults}
                     selected={this.state.selected}
-                    handleMouseDown={this.handleMouseDown}
-                    handleMouseEnter={this.handleMouseEnter}
+                    handlePointerDown={this.handlePointerDown}
+                    handlePointerEnter={this.handlePointerEnter}
                     isMouseDown={this.state.wordStart}
                 />
                 <div className={"button-div"}>

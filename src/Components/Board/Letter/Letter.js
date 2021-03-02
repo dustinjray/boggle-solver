@@ -6,12 +6,12 @@ const Letter = (props) => {
         <div className={props.selected ? "letter selected" : "letter"}
              onMouseDown={(e) => {
                  e.preventDefault();
-                 props.handleMouseDown(props.row, props.id, true);
+                 props.handlePointerDown(props.row, props.id, true);
              }}
              onMouseEnter={(e) => {
                  if(props.isMouseDown){
                      e.preventDefault();
-                     props.handleMouseEnter(props.row, props.id, props.value);
+                     props.handlePointerEnter(props.row, props.id, props.value);
                  }
              }}
         >

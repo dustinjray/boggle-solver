@@ -4,12 +4,12 @@ import './BoardStyle.css';
 
 const Board = (props) => {
 
-    function handleMouseEnter(x, y, letter) {
-        props.handleMouseEnter(x, y, letter);
+    function handlePointerEnter(x, y, letter) {
+        props.handlePointerEnter(x, y, letter);
     }
 
-    function handleMouseDown(x, y, isMouseDown) {
-        props.handleMouseDown(x, y, isMouseDown);
+    function handlePointerDown(x, y, isMouseDown) {
+        props.handlePointerDown(x, y, isMouseDown);
     }
 
     const layout = props.dice.map((row, rowID) => (
@@ -20,8 +20,8 @@ const Board = (props) => {
                 key={rowID.toString() + index.toString()}
                 row={rowID}
                 id={index}
-                handleMouseDown={handleMouseDown}
-                handleMouseEnter={handleMouseEnter}
+                handlePointerDown={handlePointerDown}
+                handlePointerEnter={handlePointerEnter}
                 isMouseDown={props.isMouseDown}
                 selected={props.selected[rowID][index]}
                 />
