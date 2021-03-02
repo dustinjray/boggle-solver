@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+.guess-div {
+    text-align: center;
+    min-height: 4rem;
+}
+.guess {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 8px;
+}
