@@ -240,7 +240,7 @@ class App extends Component {
                 </div>
                 <div className={"stats-panel"}>
                     <h2>Possible Words: {this.state.allWords.length}</h2>
-                    <h2>Words Found: {this.state.guessedWords.length}</h2>
+                    <h2>Words Found: {this.state.guessedWords.size}</h2>
                     <h2>Score: {this.state.score}</h2>
                 </div>
                 <hr/>
