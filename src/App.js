@@ -5,7 +5,6 @@ import wordFile from './words.txt';
 import Board from './Components/Board/Board';
 import Guess from './Components/Guess/Guess';
 import AllWords from './Components/AllWords/AllWords';
-import Timer from './Components/Timer/Timer';
 import trie from './Components/Util/Trie';
 import solver from './Components/Util/Solver';
 
@@ -49,6 +48,9 @@ class App extends Component {
               text.split('\n').forEach(word => {
                   trie.addWord(word);
               });
+          })
+          .then(response => {
+              alert("tree done");
           });
   }
 
@@ -127,7 +129,7 @@ class App extends Component {
   handleStart = async () => {
       await this.clearSelected();
       solver.clear();
-      this.rollDice();
+      await this.rollDice();
       await solver.solveBoard(this.state.diceResults);
       const words = solver.getWords();
       const paths = solver.getPaths();
