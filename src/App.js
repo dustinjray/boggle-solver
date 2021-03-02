@@ -48,9 +48,6 @@ class App extends Component {
               text.split('\n').forEach(word => {
                   trie.addWord(word);
               });
-          })
-          .then(response => {
-              alert("tree done");
           });
   }
 
@@ -195,6 +192,10 @@ class App extends Component {
       }
   }
 
+  handlePointerMove = (e) => {
+      e.preventDefault();
+  }
+
   showPath = async (index) => {
       await this.clearSelected();
       const newSelected = this.state.selected.slice();
@@ -218,7 +219,9 @@ class App extends Component {
     return (
         <div className={"app"}
              onMouseUp={this.handlePointerUp}>
-            <div className={"game-area"}>
+            <div className={"game-area"}
+                 onPointerMove={(e) => this.handlePointerMove(e)}
+            >
                 <Guess string={this.state.word}/>
                 <Board
                     dice={this.state.diceResults}
