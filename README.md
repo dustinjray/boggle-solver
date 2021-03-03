@@ -1,5 +1,7 @@
 # Boggle Practice
 
+[Playable Version](https://dustinjray.github.io/boggle-solver)
+
 This React app functions as a single player Boggle game to allow you to practice and get better. After the game, all available words are revealed.
 
 ## Motivation
