@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+#Boggle Practice
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React app functions as a single player Boggle game to allow you to practice and get better. After the game, all available words are revealed.
 
-## Available Scripts
+##Motivation
 
-In the project directory, you can run:
+Recently I've been playing the Boggle game from the Play Store while still in our endless quarantine, and I was getting beaten. Badly. So I made an app to generate a Boggle board and tell me what words were present and in theory I was going to look over this list and learn the common words to look for. This got boring and I kept adding features and now it's single-player Boggle that shows you what you missed when the game is over.
 
-### `npm start`
+##Built with
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+*[React](https://www.reactjs.org)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+##Features
 
-### `npm test`
+After the game, a list of all possible words appears beneath the game area. Words you found will be highlighted in green. Click on any word to show where the solver found it on the board.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##Credits
 
-### `npm run build`
+[Lyndsey Browning Boggle Solver](https://github.com/lyndseybrowning/boggle-solver)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I did not know how to take a text file of a list of words and iterate over it, so the code to do this is taken basically directly from this respository. Also I did look over her app when I got stuck, but I did my best to keep this to a minimum and tried to rely on Google or attempting until I succeeded with problems I encountered. As a result I'm not sure how much her code influenced mine, I'm sure it did some. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Word List](http://www.gwicks.net/dictionaries.htm)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I found my list of words here. Disclaimer: I don't know how useful this list actually is for the Boggle app but it's the best I could come up with.

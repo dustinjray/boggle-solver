@@ -206,8 +206,6 @@ class App extends Component {
       await this.clearSelected();
       const newSelected = this.state.selected.slice();
       const paths = this.state.paths[index];
-      console.log(index);
-      console.log(paths);
       paths.forEach((tile, index) => {
           setTimeout(() => {
               newSelected[tile[0]][tile[1]] = true;
