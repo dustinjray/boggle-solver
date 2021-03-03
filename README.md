@@ -4,6 +4,10 @@
 
 This React app functions as a single player Boggle game to allow you to practice and get better. After the game, all available words are revealed.
 
+## How to Play
+
+The start button begins a 90-second game. Click on the letter you want to start with and drag your mouse to the subsequent letters. Releasing the mouse will score your word.
+
 ## Motivation
 
 Recently I've been playing the Boggle game from the Play Store while still in our endless quarantine, and I was getting beaten. Badly. So I made an app to generate a Boggle board and tell me what words were present and in theory I was going to look over this list and learn the common words to look for. This got boring and I kept adding features and now it's single-player Boggle that shows you what you missed when the game is over.
