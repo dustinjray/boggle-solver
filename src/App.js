@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import './App.css';
-import wordFile from './words.txt';
+import wordFile from './english.txt';
 
 import Board from './Components/Board/Board';
 import Guess from './Components/Guess/Guess';
 import AllWords from './Components/AllWords/AllWords';
+import Timer from './Components/Timer/Timer';
 import trie from './Components/Util/Trie';
 import solver from './Components/Util/Solver';
 
@@ -33,7 +34,7 @@ class App extends Component {
             usedTiles: new Set(),
             score: 0,
             showWords: false,
-            gameStart: false
+            gameHasStarted: false
         };
         this.handlePointerUp = this.handlePointerUp.bind(this);
         this.showPath = this.showPath.bind(this);
@@ -45,9 +46,11 @@ class App extends Component {
               return response.text()
           })
           .then(text => {
-              text.split('\n').forEach(word => {
-                  trie.addWord(word);
-              });
+              if(text.length >= 3){
+                  text.split('\n').forEach(word => {
+                      trie.addWord(word.toUpperCase());
+                  });
+              }
           });
   }
 
@@ -105,9 +108,9 @@ class App extends Component {
       }
   }
 
-  startGame = () => {
+  endGame = () => {
       this.setState(() => {
-          return {gameStart: false};
+          return {gameHasStarted: false};
       });
   }
 
@@ -130,22 +133,29 @@ class App extends Component {
       await solver.solveBoard(this.state.diceResults);
       const words = solver.getWords();
       const paths = solver.getPaths();
-      this.setState({allWords: words, guessedWords: new Set(), paths: paths, score: 0, showWords: false, gameStart: true});
+      this.setState({allWords: words, guessedWords: new Set(), paths: paths, score: 0, showWords: false, gameHasStarted: true});
   }
 
   handlePointerDown = (x, y, isMouseDown) => {
-      if(!this.state.selected[x][y]) {
-          this.setState((prevState) => {
-              const selected = prevState.selected;
-              selected[x][y] = true;
-              return {wordStart: isMouseDown, lastTile: [x, y], selected: selected, word: prevState.diceResults[x][y]}
-          });
+      if (this.state.gameHasStarted){
+          if (!this.state.selected[x][y]) {
+              this.setState((prevState) => {
+                  const selected = prevState.selected;
+                  selected[x][y] = true;
+                  return {
+                      wordStart: isMouseDown,
+                      lastTile: [x, y],
+                      selected: selected,
+                      word: prevState.diceResults[x][y]
+                  }
+              });
+          }
       }
   }
 
 
   handlePointerUp() {
-      if(this.state.wordStart){
+      if(this.state.wordStart && this.state.gameHasStarted){
           const selected = [
               Array(4).fill(false),
               Array(4).fill(false),
@@ -172,7 +182,7 @@ class App extends Component {
   }
 
   handlePointerEnter = (x, y, letter) => {
-      if (this.state.wordStart){
+      if (this.state.wordStart && this.state.gameHasStarted){
           if(this.isAdjacent(x, y)){
               if (!this.state.selected[x][y] && !this.state.usedTiles.has(`${x.toString()}${y.toString()}`)) {
                   this.setState((prevState) => {
@@ -192,10 +202,6 @@ class App extends Component {
       }
   }
 
-  handlePointerMove = (e) => {
-      e.preventDefault();
-  }
-
   showPath = async (index) => {
       await this.clearSelected();
       const newSelected = this.state.selected.slice();
@@ -211,17 +217,22 @@ class App extends Component {
 
   }
 
-  handleSolve = () => {
-      this.setState({showWords: true});
+  showResults = () => {
+      this.setState({gameHasStarted: false, showWords: true});
   }
 
+
   render () {
-    return (
+      let controlArea = this.state.gameHasStarted ?
+          <Timer endGame={() => this.endGame} showResults={this.showResults} /> :
+          <button
+              className={"game-button"}
+              onClick={() => this.handleStart()}>START</button>;
+
+      return (
         <div className={"app"}
              onMouseUp={this.handlePointerUp}>
-            <div className={"game-area"}
-                 onPointerMove={(e) => this.handlePointerMove(e)}
-            >
+            <div className={"game-area"}>
                 <Guess string={this.state.word}/>
                 <Board
                     dice={this.state.diceResults}
@@ -231,12 +242,7 @@ class App extends Component {
                     isMouseDown={this.state.wordStart}
                 />
                 <div className={"button-div"}>
-                    <button
-                        className={"game-button"}
-                        onClick={() => this.handleStart()}>START</button>
-                    <button
-                        className={"game-button"}
-                        onClick={() => this.handleSolve()}>SOLVE</button>
+                    {controlArea}
                 </div>
                 <div className={"stats-panel"}>
                     <h2>Possible Words: {this.state.allWords.length}</h2>
