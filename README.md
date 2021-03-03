@@ -1,20 +1,20 @@
-#Boggle Practice
+# Boggle Practice
 
 This React app functions as a single player Boggle game to allow you to practice and get better. After the game, all available words are revealed.
 
-##Motivation
+## Motivation
 
 Recently I've been playing the Boggle game from the Play Store while still in our endless quarantine, and I was getting beaten. Badly. So I made an app to generate a Boggle board and tell me what words were present and in theory I was going to look over this list and learn the common words to look for. This got boring and I kept adding features and now it's single-player Boggle that shows you what you missed when the game is over.
 
-##Built with
+## Built with
 
 *[React](https://www.reactjs.org)
 
-##Features
+## Features
 
 After the game, a list of all possible words appears beneath the game area. Words you found will be highlighted in green. Click on any word to show where the solver found it on the board.
 
-##Credits
+## Credits
 
 [Lyndsey Browning Boggle Solver](https://github.com/lyndseybrowning/boggle-solver)
 
